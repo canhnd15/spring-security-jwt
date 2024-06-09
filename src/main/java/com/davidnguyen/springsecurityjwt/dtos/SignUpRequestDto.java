@@ -29,12 +29,4 @@ public class SignUpRequestDto {
     private String password;
 
     private Set<String> roles;
-
-    @Autowired
-    public SignUpRequestDto(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.roles = null;
-    }
 }

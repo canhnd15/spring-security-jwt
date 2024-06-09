@@ -1,6 +1,7 @@
 package com.davidnguyen.springsecurityjwt.exceptions;
 
 import com.davidnguyen.springsecurityjwt.dtos.ApiResponseDto;
+import com.davidnguyen.springsecurityjwt.entity.ResponseStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -24,7 +25,7 @@ public class GlobalExceptionHandler {
                 .badRequest()
                 .body(
                         ApiResponseDto.builder()
-                                .isSuccess(false)
+                                .status(String.valueOf(ResponseStatus.FAIL))
                                 .message("Registration Failed: Please provide valid data.")
                                 .response(errorMessage)
                                 .build()
@@ -37,7 +38,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.CONFLICT)
                 .body(
                         ApiResponseDto.builder()
-                                .isSuccess(false)
+                                .status(String.valueOf(ResponseStatus.FAIL))
                                 .message(exception.getMessage())
                                 .build()
                 );
@@ -49,7 +50,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .body(
                         ApiResponseDto.builder()
-                                .isSuccess(false)
+                                .status(String.valueOf(ResponseStatus.FAIL))
                                 .message(exception.getMessage())
                                 .build()
                 );

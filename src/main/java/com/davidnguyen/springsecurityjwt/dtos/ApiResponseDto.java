@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ApiResponseDto<T> {
-    private boolean isSuccess;
+    private String status;
     private String message;
     private T response;
 }

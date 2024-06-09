@@ -4,6 +4,7 @@ import com.davidnguyen.springsecurityjwt.dtos.ApiResponseDto;
 import com.davidnguyen.springsecurityjwt.dtos.SignInRequestDto;
 import com.davidnguyen.springsecurityjwt.dtos.SignInResponseDto;
 import com.davidnguyen.springsecurityjwt.dtos.SignUpRequestDto;
+import com.davidnguyen.springsecurityjwt.entity.ResponseStatus;
 import com.davidnguyen.springsecurityjwt.entity.Role;
 import com.davidnguyen.springsecurityjwt.entity.User;
 import com.davidnguyen.springsecurityjwt.exceptions.RoleNotFoundException;
@@ -59,7 +60,7 @@ public class AuthServiceImpl implements AuthService {
         userService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 ApiResponseDto.builder()
-                        .isSuccess(true)
+                        .status(String.valueOf(ResponseStatus.SUCCESS))
                         .message("User account has been successfully created!")
                         .build()
         );
@@ -89,7 +90,7 @@ public class AuthServiceImpl implements AuthService {
 
         return ResponseEntity.ok(
                 ApiResponseDto.builder()
-                        .isSuccess(true)
+                        .status(String.valueOf(ResponseStatus.SUCCESS))
                         .message("Sign in successfull!")
                         .response(signInResponseDto)
                         .build()

@@ -3,13 +3,15 @@ package com.davidnguyen.springsecurityjwt.service.impl;
 import com.davidnguyen.springsecurityjwt.entity.User;
 import com.davidnguyen.springsecurityjwt.repository.UserRepository;
 import com.davidnguyen.springsecurityjwt.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserServiceImpl implements UserService {
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public boolean existByUsername(String username) {
