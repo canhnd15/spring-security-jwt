@@ -47,7 +47,7 @@ public class TestController {
     }
 
     //    Only users with 'ROLE_SUPER_ADMIN' role can access this end point'
-    @GetMapping("/superAdmin")
+    @GetMapping("/super-admin")
     @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
     public ResponseEntity<ApiResponseDto<?>> SuperAdminDashboard() {
         return ResponseEntity
@@ -59,7 +59,7 @@ public class TestController {
     }
 
     //    Users with 'ROLE_SUPER_ADMIN' or 'ROLE_ADMIN' roles can access this end point'
-    @GetMapping("/AdminOrSuperAdmin")
+    @GetMapping("/admin-or-super-admin")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ApiResponseDto<?>> AdminOrSuperAdminContent() {
         return ResponseEntity
